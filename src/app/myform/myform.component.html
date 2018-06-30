@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-md-push-4 col-lg-push-4 col-md-4 col-lg-4">
+		<h2>Form example</h2>
+		<form action="#">
+			<label for="ipersonName">Name</label>
+			<input [(ngModel)]="name" (keyup.enter)="fun()" type="text" class="form-control" name="personName" id="ipersonName" required>
+
+			<label for="ipersonLastName">Last Name</label>
+			<input [(ngModel)]="lastName" type="text" class="form-control" name="personLastName" id="ipersonLastName" required>
+
+			<label for="ipersonAge">Age</label>
+			<input [(ngModel)]="age" type="number" class="form-control" name="personAge" id="ipersonAge" required>
+
+			<label> Enter Email?
+				<input type="checkbox" name="personHasEmail" id="ipersonHasEmail" (change)="hasEmailChanged($event.target.checked)">
+			</label>
+			<br>
+
+			<div id="divPersonEmail" [hidden]="!hasEmail">
+				<input [(ngModel)]="email" [disabled]="!hasEmail" type="email" class="form-control" name="personEmail" id="ipersonEmail" required>
+				<br>
+			</div>
+
+			<button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+		</form>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	<table class="col-md-push-3 col-lg-push-3 col-md-6 col-lg-6">
+		<tr>
+			<th>Name</th>
+			<th>Last Name</th>
+			<th>Age</th>
+			<th>Email</th>
+		</tr>
+		<tr *ngFor="let p of people">
+			<td>{{p.name}}</td>
+			<td>{{p.lastName}}</td>
+			<td>{{p.age}}</td>
+			<td>{{p.email}}</td>
+		</tr>
+	</table>
+</div>
